@@ -1,118 +1,124 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import React, {useState} from 'react';
+import { PropsWithChildren } from 'react';
+//Components:-
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
-  useColorScheme,
   View,
+  StyleSheet,
+  Button,
+  TextInput
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+//styles
+function App(): React.JSX.Element{
+  return(
+    <View> 
+      <Text style = {styles.textboxStyle}>Hello This is Textbox Style</Text>
+      <TextInput 
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+      style= {styles.textboxStyle}
+      placeholder='Name'
+      />
     </View>
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+//inline 
+const styles = StyleSheet.create({
+  textboxStyle:{
+    color :'#fff',
+    fontSize:25,
+    backgroundColor:'blue',
+    margin:10,
+    padding:10,
+    height:150,
+    textAlignVertical:'center',
+    textAlign:'center',
+    borderColor:'red',
+    borderWidth:4
+  }
+}) 
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+/*
+//Prop
+type UserProps = {
+  name: string;
+  age: number;
+};
+function App(): React.JSX.Element{
+  const [name, setName] = useState("Sanjeev");
+
+  const updateUser = () => {
+    setName("Peter");
   };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+ return(
+    <View>
+      <Text style = {{fontSize:30}}> Props in React Js:</Text>
+      <Button title='Update Prop' onPress={updateUser}></Button>
+      <User name={name} age={29} />
+    </View>
   );
 }
+const User = (props : UserProps) =>{
+  return(
+    <View style ={{ backgroundColor:'green', padding : 5}}>
+      <Text style = {{fontSize:30}}> Name:{props.name}</Text>
+      <Text style = {{fontSize:30}}> Age :{props.age}</Text>
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+    </View>
+  );
 
+}
+
+
+
+ import UserData from './components/UserData';
+ const name = "sanjeev";
+ var email="er.skbaghla@gmail.com"
+function App(): React.JSX.Element {
+  
+//Using State:
+  const [name,setName] = useState("Sanjeev"); // name is actual value (getName), seName is like a function when to update
+  let data = "Sam"
+  function testName(){
+    setName("Baghla")
+    data = "peter"; // not updating  because compo doesn't re-render
+  }
+
+  // let data = 10;
+
+  // const fruit = (val : String) =>{
+  //   data = 20;
+  //   console.warn(data)
+  //   return "apple";
+  // }
+  
+  // let age = 29;
+  return (
+    //view is wrapper for components
+    <View>  
+      { <Text style = {{fontSize : 20}}> Button and onPressEvent : {data}</Text>
+      <Button title='Button One' color={'green'} onPress={()=>fruit("Hello")}></Button> 
+       <Button title='Button two' color={'red'} onPress = {fruit}></Button> 
+       <UserData></UserData> 
+      
+      <Text style = {{fontSize : 30}}>{name}</Text>
+      <Text style = {{fontSize : 30}}>{data}</Text>
+      <Button title='Update Name' onPress={testName}></Button>
+    </View>
+  );
+  
+}
+
+const CompanyData=()=>{ 
+  return(
+    <View>
+      { //<UserData></UserData> //nested Component }
+      <Text style={{fontSize : 30}}>Name : XYZ</Text>
+      <Text style={{fontSize : 30}}>Total Employee: 1000</Text>
+      <Text style={{fontSize : 30}}>Location: Toronto</Text>
+    </View>
+  );
+}
+*/
 export default App;
